@@ -2,9 +2,9 @@
 
 ## General
 
->What are the blank elements?
+**1)** What are the blank elements?
 
-```
+``` html
 <____________>
 <____ lang="en">
     <____>
@@ -17,59 +17,53 @@
 ```
 
 
->What is an attribute?
+**2)** What is an attribute?
 
-**A)** Provides a reference to an element
+>A) Provides a reference to an element
 
-**B)** Provides information about an element
+>B) Provides information about an element
 
-**C)** Adds a class to that element
+>C) Adds a class to that element
 
 ___
 
 ## Head
 
->What are the 6 tags you can include in `<head>`?
-- T_____
-- Sc____
-- St____
-- L___
-- M___
-- V_______
+**3)** What are the 6 tags you can include in `<head>`?
+>- T_____
+>- Sc____
+>- St____
+>- L___
+>- M___
+>- V_______
 
 
->What does `meta` do?
+**4)** What does `meta` do?
 
-|
-
->Why is it important to include the viewport attribute inside of `meta`?
+**5)** Why is it important to include the viewport attribute inside of `meta`?
 
 ___
 ## Writing HTML Syntax
 
->Why is indenting nested elements helpful to developers?
+**6)** Why is indenting nested elements helpful to developers?
 
-|
+**7)** Which is an example of a valid `Boolean` attribute?
 
->Which is an example of a valid `Boolean` attribute?
+>A) `<div hidden="true">`
 
-A) `<div hidden="true">`
+>B) `<div hidden=true>`
 
-B) `<div hidden=true>`
-
-C) `<div hidden>`
+>C) `<div hidden>`
 
 
->What is the difference between a `class` and an `id`?
+**8)** What is the difference between a `class` and an `id`?
 
-|
+**9)** Which one is not a valid global attribute?
 
->Which one is not a valid global attribute?
+>A) Access Key
 
-A) Access Key
+>B) Tab Index
 
-B) Tab Index
+>C) Id
 
-C) Id
-
-D) Data
+>D) Data

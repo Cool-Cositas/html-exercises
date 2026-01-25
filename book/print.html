@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-283bf4e6.js";
+            window.path_to_searchindex_js = "searchindex-440d1016.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-9aebf2ec.js"></script>
+        <script src="toc-c1786513.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -221,6 +221,18 @@
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="setting-up"><a class="header" href="#setting-up">Setting Up</a></h1>
+<h2 id="project-structure"><a class="header" href="#project-structure">Project structure</a></h2>
+<p>Create a folder somewhere with whatever name, this will be where your files are stored</p>
+<p>Add <code>index.html</code> and <code>styles.css</code> files in that folder. These are the the files that make the webpage</p>
+<p>Next, create an <code>assets</code> folder, and copy paste the files that you downloaded (or just copy the entire folder into your project folder)</p>
+<p>This should be how your project looks</p>
+<pre><code class="language-plaintext">[project folder]/
+  index.html
+  styles.css
+  assets/
+  - [all the files from pearson]
+</code></pre>
+<h2 id="making-the-html-file"><a class="header" href="#making-the-html-file">Making the HTML file</a></h2>
 <p>All HTML files follow a simple structure.</p>
 <p>They first start by declaring what type of document it is</p>
 <p><code>&lt;!DOCTYPE HTML&gt;</code></p>
@@ -239,8 +251,17 @@
 &lt;meta name="description" content="My description"&gt;
 &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
 </code></pre>
+<h2 id="linking-external-css-sheet"><a class="header" href="#linking-external-css-sheet">Linking external CSS Sheet</a></h2>
+<p>Within the <code>&lt;head&gt;</code> element create a <code>&lt;link&gt;</code> tag for the stylesheet file. This is how it should look like:</p>
+<pre><code class="language-html">&lt;link rel="stylesheet" href="styles.css"&gt;
+</code></pre>
+<blockquote>
+<p><code>rel</code> basically tells HTML what typa thing you want to link.<br><code>href</code> is the path to that file you made.</p>
+</blockquote>
 <hr>
-<p>You should have something that looks like this</p>
+<h2 id="checkpoint"><a class="header" href="#checkpoint">Checkpoint</a></h2>
+<p>Your CSS file should be empty for now</p>
+<p>And your HTML file should look like this</p>
 <pre><code class="language-html">&lt;!DOCTYPE HTML&gt;
 &lt;html lang="en"&gt;
   &lt;head&gt;
@@ -249,6 +270,7 @@
     &lt;meta name="keywords" content=""&gt;
     &lt;meta name="description" content="My description"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
   &lt;/head&gt;
   &lt;body&gt;
     
@@ -257,9 +279,13 @@
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="general-layout"><a class="header" href="#general-layout">General Layout</a></h1>
+<img src="assets/mockup.png" style="max-width: 100%; min-width: 40%; width: 500px; margin: auto;">
 <p>Let’s think about the general layout here.</p>
 <p>From top-to-bottom, we have a <code>header</code>, <code>content</code> and <code>footer</code> containers.</p>
 <p>Let’s try our best using semantic markup, such as <code>&lt;header&gt;</code> <code>&lt;section&gt;</code> <code>&lt;footer&gt;</code></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="making-the-layout"><a class="header" href="#making-the-layout">Making the Layout</a></h1>
+<h2 id="html-layout"><a class="header" href="#html-layout">HTML Layout</a></h2>
 <pre><code class="language-html">&lt;!DOCTYPE HTML&gt;
 &lt;html lang="en"&gt;
     &lt;head&gt;
@@ -268,7 +294,8 @@
         &lt;meta name="keywords" content=""&gt;
         &lt;meta name="description" content="My description"&gt;
         &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-        &lt;/head&gt;
+        &lt;link rel="stylesheet" href="styles.css"&gt;
+    &lt;/head&gt;
     &lt;body&gt;
         &lt;main&gt;
             &lt;header&gt;&lt;/header&gt;
@@ -285,6 +312,93 @@
 <pre><code class="language-html">&lt;main&gt;
     &lt;header&gt;&lt;/header&gt;
     &lt;section&gt;&lt;/section&gt;
+    &lt;footer&gt;&lt;/footer&gt;
+&lt;/main&gt;
+</code></pre>
+<p>Why did I add a <code>&lt;main&gt;</code> element? Well, we need some way to organise all the sections, and using <code>&lt;main&gt;</code> is the best choice for something like this (as it’s the main content of the page)</p>
+<p>Let’s also add suitable classes</p>
+<pre><code class="language-html">&lt;main class="grid-wrapper"&gt;
+    &lt;header&gt;&lt;/header&gt;
+    &lt;section class="content"&gt;&lt;/section&gt;
+    &lt;footer&gt;&lt;/footer&gt;
+&lt;/main&gt;
+</code></pre>
+<blockquote>
+<p><code>header</code> and <code>footer</code> don’t exactly need a class, they’re already a very specific element, as we wouldn’t have multiple footers in one page. The same thing with <code>main</code>, usually there is only 1 main element in any website, but just to be in the safe side, I added a class to be more specific for the grid layout.</p>
+</blockquote>
+<h2 id="css-styling"><a class="header" href="#css-styling">CSS Styling</a></h2>
+<p>So that the page would be displayed properly, we’ll use our css file to style the layout.</p>
+<ul>
+<li>
+<p>First, we want to get rid of the margin that <code>&lt;body&gt;</code> has by default</p>
+</li>
+<li>
+<p>Next, we want both <code>&lt;body&gt;</code> and <code>&lt;main&gt;</code> to cover the whole page</p>
+</li>
+<li>
+<p><code>&lt;main&gt;</code> should be displayed as a grid, with 3 rows. The first should be the minimum, the second should be automatic to fill rest of the space, and the third should be minimum, just like the first.</p>
+</li>
+</ul>
+<br>
+<p>Try making these thingies yourself. Visual Studio Code has built-in auto-complete/hints (i believe it’s <kbd>CTRL</kbd> + <kbd>Space</kbd> to activate it, but idk).</p>
+<p>Here’s the HTML you would use for now (it’s easier to see the layout)</p>
+<p>And btw there’s a little copy button to the right of the code, in case you didn’t know</p>
+<pre><code class="language-html">&lt;main class="grid-wrapper" style="background: #290000; padding: 20px; box-sizing: border-box; gap: 4px;"&gt;
+    &lt;header style="background: red;"&gt;Header&lt;/header&gt;
+    &lt;section style="background: green;" class="content"&gt;Content&lt;/section&gt;
+    &lt;footer style="background: blue;"&gt;Footer&lt;/footer&gt;
+&lt;/main&gt;
+</code></pre>
+<p>I’ll remind you a couple things about CSS syntax</p>
+<pre><code class="language-css">selector {
+    property: value;
+    property: value;
+}
+</code></pre>
+<p>Selector could be a mix of any of the following:</p>
+<ul>
+<li><code>element</code></li>
+<li><code>.class</code></li>
+<li><code>#id</code></li>
+<li><code>[attribute]</code></li>
+</ul>
+<p>So this would be a valid selector: <code>main.grid-wrapper</code></p>
+<p>Define rows with <code>grid-template-rows: [values];</code></p>
+<h2 id="gotchas-to-look-out-for"><a class="header" href="#gotchas-to-look-out-for">Gotchas to look out for</a></h2>
+<ul>
+<li>
+<p>With <code>&lt;body&gt;</code>, you can’t just set the <code>height</code> or <code>width</code> to 100% (at least not reliably).</p>
+<ul>
+<li>The correct way you would do this is using viewport relative measurements, like vw or vh.</li>
+<li><code>&lt;main&gt;</code> is fine with width and height being 100%, it’s just <code>&lt;body&gt;</code> that has a problem.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>This is what your layout should look like</p>
+<img src="assets/3-1css.png">
+<p>(Solution is in the next page)</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="layout-css"><a class="header" href="#layout-css">Layout CSS</a></h1>
+<pre><code class="language-css">body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: min-content auto min-content;
+}
+</code></pre>
+<p>Got rid of the margins in <code>body</code>, and made it cover the whole screen</p>
+<p>Added 3 rows to the grid. <code>min-content</code> will try to shrink that element as much as it can. <code>auto</code> will try expand that element as much as it can.</p>
+<p>If you don’t like your site looking like an Alex Turner presentation, then you can go back to your old HTML structure</p>
+<pre><code class="language-html">&lt;main class="grid-wrapper"&gt;
+    &lt;header&gt;&lt;/header&gt;
+    &lt;section class="content"&gt;&lt;/section&gt;
     &lt;footer&gt;&lt;/footer&gt;
 &lt;/main&gt;
 </code></pre>
@@ -312,22 +426,6 @@
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
         <script>

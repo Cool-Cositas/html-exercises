@@ -1,8 +1,12 @@
 # Summary
 
-- [HTML Document Structure](./chapter_1.md)
+- [Activity](chapter1.md)
 
-- [Structural Markup](./chapter_2.md)
-___
+- [Setup](chapter2.md)
 
-[Answers](answers/answers.md)
+- [Layout](chapter3.md)
+
+<!-- 
+- [HTML Document Structure](./old/chapter_1.md)
+
+- [Structural Markup](./old/chapter_2.md) -->

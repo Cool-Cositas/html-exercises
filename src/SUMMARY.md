@@ -8,6 +8,8 @@
     - [Making the Layout](chapter3-1.md)
     - [Layout CSS](chapter3-2.md)
 
+- [CSS Styling](chapter4.md)
+
 <!-- 
 - [HTML Document Structure](./old/chapter_1.md)
 

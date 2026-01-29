@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-440d1016.js";
+            window.path_to_searchindex_js = "searchindex-dd75964f.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-c1786513.js"></script>
+        <script src="toc-eded93af.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -208,9 +208,9 @@
 <p>Why did I add a <code>&lt;main&gt;</code> element? Well, we need some way to organise all the sections, and using <code>&lt;main&gt;</code> is the best choice for something like this (as it’s the main content of the page)</p>
 <p>Let’s also add suitable classes</p>
 <pre><code class="language-html">&lt;main class="grid-wrapper"&gt;
-    &lt;header&gt;&lt;/header&gt;
+    &lt;header class="header"&gt;&lt;/header&gt;
     &lt;section class="content"&gt;&lt;/section&gt;
-    &lt;footer&gt;&lt;/footer&gt;
+    &lt;footer class="footer"&gt;&lt;/footer&gt;
 &lt;/main&gt;
 </code></pre>
 <blockquote>
@@ -234,9 +234,9 @@
 <p>Here’s the HTML you would use for now (it’s easier to see the layout)</p>
 <p>And btw there’s a little copy button to the right of the code, in case you didn’t know</p>
 <pre><code class="language-html">&lt;main class="grid-wrapper" style="background: #290000; padding: 20px; box-sizing: border-box; gap: 4px;"&gt;
-    &lt;header style="background: red;"&gt;Header&lt;/header&gt;
+    &lt;header style="background: red;" class="header"&gt;Header&lt;/header&gt;
     &lt;section style="background: green;" class="content"&gt;Content&lt;/section&gt;
-    &lt;footer style="background: blue;"&gt;Footer&lt;/footer&gt;
+    &lt;footer style="background: blue;" class="footer"&gt;Footer&lt;/footer&gt;
 &lt;/main&gt;
 </code></pre>
 <p>I’ll remind you a couple things about CSS syntax</p>

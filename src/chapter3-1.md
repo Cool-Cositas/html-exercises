@@ -40,9 +40,9 @@ Let's also add suitable classes
 
 ```html
 <main class="grid-wrapper">
-    <header></header>
+    <header class="header"></header>
     <section class="content"></section>
-    <footer></footer>
+    <footer class="footer"></footer>
 </main>
 ```
 
@@ -67,9 +67,9 @@ Here's the HTML you would use for now (it's easier to see the layout)
 And btw there's a little copy button to the right of the code, in case you didn't know
 ```html
 <main class="grid-wrapper" style="background: #290000; padding: 20px; box-sizing: border-box; gap: 4px;">
-    <header style="background: red;">Header</header>
+    <header style="background: red;" class="header">Header</header>
     <section style="background: green;" class="content">Content</section>
-    <footer style="background: blue;">Footer</footer>
+    <footer style="background: blue;" class="footer">Footer</footer>
 </main>
 ```
 

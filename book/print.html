@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-440d1016.js";
+            window.path_to_searchindex_js = "searchindex-dd75964f.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-c1786513.js"></script>
+        <script src="toc-eded93af.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -318,9 +318,9 @@
 <p>Why did I add a <code>&lt;main&gt;</code> element? Well, we need some way to organise all the sections, and using <code>&lt;main&gt;</code> is the best choice for something like this (as it’s the main content of the page)</p>
 <p>Let’s also add suitable classes</p>
 <pre><code class="language-html">&lt;main class="grid-wrapper"&gt;
-    &lt;header&gt;&lt;/header&gt;
+    &lt;header class="header"&gt;&lt;/header&gt;
     &lt;section class="content"&gt;&lt;/section&gt;
-    &lt;footer&gt;&lt;/footer&gt;
+    &lt;footer class="footer"&gt;&lt;/footer&gt;
 &lt;/main&gt;
 </code></pre>
 <blockquote>
@@ -344,9 +344,9 @@
 <p>Here’s the HTML you would use for now (it’s easier to see the layout)</p>
 <p>And btw there’s a little copy button to the right of the code, in case you didn’t know</p>
 <pre><code class="language-html">&lt;main class="grid-wrapper" style="background: #290000; padding: 20px; box-sizing: border-box; gap: 4px;"&gt;
-    &lt;header style="background: red;"&gt;Header&lt;/header&gt;
+    &lt;header style="background: red;" class="header"&gt;Header&lt;/header&gt;
     &lt;section style="background: green;" class="content"&gt;Content&lt;/section&gt;
-    &lt;footer style="background: blue;"&gt;Footer&lt;/footer&gt;
+    &lt;footer style="background: blue;" class="footer"&gt;Footer&lt;/footer&gt;
 &lt;/main&gt;
 </code></pre>
 <p>I’ll remind you a couple things about CSS syntax</p>
@@ -380,6 +380,7 @@
 <p>(Solution is in the next page)</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="layout-css"><a class="header" href="#layout-css">Layout CSS</a></h1>
+<h2 id="answer-to-something"><a class="header" href="#answer-to-something">Answer to something</a></h2>
 <pre><code class="language-css">body {
     margin: 0;
     width: 100vw;
@@ -397,10 +398,341 @@ main {
 <p>Added 3 rows to the grid. <code>min-content</code> will try to shrink that element as much as it can. <code>auto</code> will try expand that element as much as it can.</p>
 <p>If you don’t like your site looking like an Alex Turner presentation, then you can go back to your old HTML structure</p>
 <pre><code class="language-html">&lt;main class="grid-wrapper"&gt;
-    &lt;header&gt;&lt;/header&gt;
+    &lt;header class="header"&gt;&lt;/header&gt;
+    &lt;section class="content"&gt;&lt;/section&gt;
+    &lt;footer class="footer"&gt;&lt;/footer&gt;
+&lt;/main&gt;
+</code></pre>
+<h2 id="header-layout"><a class="header" href="#header-layout">Header Layout</a></h2>
+<p>Now let’s move onto styling the header</p>
+<img src="assets/mockup.png" style="width: 100%; aspect-ratio: 6; margin: auto; object-fit: cover; object-position: 0% 2%;">
+<ol>
+<li>
+<p>We’ll put the logo image (logo.jpg from assets)</p>
+<ul>
+<li>Make sure width is 100px</li>
+<li>Make it inline (to order the elements from left to right instead of up-down)</li>
+</ul>
+</li>
+<li>
+<p>And then we’ll add the header title</p>
+<ul>
+<li>Set size to 40px</li>
+<li>Make it inline</li>
+<li>Make it bold</li>
+</ul>
+</li>
+</ol>
+<p>This is how it should look like</p>
+<img src="assets/3-2header.png" style="width: 100%;">
+<h3 id="answer"><a class="header" href="#answer">Answer</a></h3>
+<p>HTML</p>
+<pre><code class="language-html">&lt;main class="grid-wrapper"&gt;
+    &lt;header class="header"&gt;
+        &lt;img class="logo" src="assets/logo.jpg"&gt;
+        &lt;h1 class="header-title"&gt;&lt;strong&gt;Clean and Gleam&lt;/strong&gt;&lt;/h1&gt;
+    &lt;/header&gt;
     &lt;section class="content"&gt;&lt;/section&gt;
     &lt;footer&gt;&lt;/footer&gt;
 &lt;/main&gt;
+</code></pre>
+<p>CSS</p>
+<pre><code class="language-css">img.logo {
+    width: 100px;
+}
+
+.header * {
+    display: inline;
+    vertical-align: middle;
+}
+</code></pre>
+<blockquote>
+<p><code>&lt;strong&gt;</code> makes it bold. <code>.header *</code> selects all of the header’s children because they individiually have to be set to <code>inline</code></p>
+</blockquote>
+<h2 id="content-layout"><a class="header" href="#content-layout">Content Layout</a></h2>
+<p>We’ll use the grids bc it’s easier for layout</p>
+<h3 id="text-area"><a class="header" href="#text-area">Text Area</a></h3>
+<img src="assets/mockup.png" style="width: 100%; aspect-ratio: 1.8; margin: auto; object-fit: cover; object-position: 0% 60%;">
+<ol>
+<li>
+<p>Make a 2x4 grid</p>
+<ul>
+<li>Merge the first two column elements together to create the About Us section (<code>grid-column: 1 / 3;</code>)</li>
+<li>Heading should be <code>min-content</code> and the paragraphs should be <code>auto</code> so that the paragraph size can expand (when setting templates)</li>
+</ul>
+</li>
+<li>
+<p>Put the content of each suitable .txt into the text areas</p>
+<ul>
+<li>Make sure you put suitable line breaks <code>&lt;br&gt;</code></li>
+</ul>
+</li>
+<li>
+<p>Headings should have a 20px size</p>
+</li>
+<li>
+<p>Make the services list a bulletpointed list</p>
+</li>
+<li>
+<p>Italicise custom review text <code>&lt;i&gt;</code></p>
+</li>
+<li>
+<p>Display <strong>About us</strong> and <strong>Custom Reviews</strong> texts as <code>justified</code></p>
+</li>
+</ol>
+<p>This is how it should look like</p>
+<img src="assets/3-2contenttext.png">
+<h3 id="text-area-answer"><a class="header" href="#text-area-answer">Text Area answer</a></h3>
+<p>CSS</p>
+<pre><code class="language-css">.content {
+    display: grid;
+    grid-template-columns: 380px auto;
+}
+
+.text-area {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: min-content auto min-content auto;
+}
+</code></pre>
+<p>HTML</p>
+<pre><code class="language-html">&lt;main class="grid-wrapper"&gt;
+    &lt;header class="header"&gt;
+        &lt;img class="logo" src="assets/logo.jpg"&gt;
+        &lt;h1 class="header-title"&gt;&lt;strong&gt;Clean and Gleam&lt;/strong&gt;&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;section class="content"&gt;
+        &lt;div class="text-area"&gt;
+            &lt;h3 style="grid-row: 1; grid-column: 1 / 3;"&gt;About Us&lt;/h3&gt;
+            &lt;p  style="grid-row: 2; grid-column: 1 / 3;"&gt;
+                Clean and Gleam is a family run domestic cleaning company with the combined experience within the cleaning industry for over twenty years. We offer professional cleaning services to make your home or apartment look its very best. From cleaning sinks, baths and tiles to polishing windows, our cleaners have the expertise to deal with every cleaning challenge.&lt;br&gt;
+                Let our staff customise a cleaning service programme to suit your individual needs and your budget. Whether you require a regular service (daily, weekly or monthly) or just a one-off service, you can count on Clean and Gleam for a cleaning service at excellent rates.
+            &lt;/p&gt;
+            &lt;h3 style="grid-row: 3; grid-column: 1;"&gt;Customer Reviews&lt;/h3&gt;
+            &lt;p  style="grid-row: 4; grid-column: 1;"&gt;
+                "Fantastic. Used for over 2 years."&lt;br&gt;
+                "The deep clean is well worth the money. Kitchen gleaming for a long time afterwards."&lt;br&gt;
+                "Joel is fantastic. He has been doing my weekly clean for five months."&lt;br&gt;
+                "I have found I only need a deep clean every three or four months as they are so thorough."&lt;br&gt;
+                "Sofa and chairs cleaned up like new."
+            &lt;/p&gt;
+            &lt;h3 style="grid-row: 3; grid-column: 2;"&gt;Services&lt;/h3&gt;
+            &lt;p  style="grid-row: 4; grid-column: 2;"&gt;
+                Daily clean&lt;br&gt;
+                Weekly clean&lt;br&gt;
+                Monthly clean&lt;br&gt;
+                Deep clean specials&lt;br&gt;
+                Window cleaning&lt;br&gt;
+                Carpet and upholstery cleaning&lt;br&gt;
+                General laundry&lt;br&gt;
+                Bedding laundry&lt;br&gt;
+                Ironing&lt;br&gt;
+                House clearances
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+    &lt;footer class="footer"&gt;&lt;/footer&gt;
+&lt;/main&gt;
+</code></pre>
+<h3 id="image-area"><a class="header" href="#image-area">Image Area</a></h3>
+<img src="assets/mockup.png" style="width: 100%; aspect-ratio: 1.8; margin: auto; object-fit: cover; object-position: 0% 60%;">
+<ol>
+<li>Make a 3x4 grid to contain the images
+<ul>
+<li>Make the 3 columns have equal spacing (<code>grid-template-columns: 33% 33% 33%</code>)</li>
+<li>Make 4 rows, 1st will be <code>min-content</code> (for the heading) and the rest will be <code>auto</code></li>
+<li>Include the appropriate image sources</li>
+<li>The top and bottom elements must span across 3 COLUMNS <code>grid-column: 1 / 4;</code></li>
+</ul>
+</li>
+</ol>
+<p>Here’s how that should look like</p>
+<img src="assets/3-2contentimages.png">
+<h3 id="image-area-answer"><a class="header" href="#image-area-answer">Image Area answer</a></h3>
+<p>HTML</p>
+<pre><code class="language-html">&lt;div class="image-area"&gt;
+    &lt;h3 class="heading" style="grid-template-columns: 1 / 4;"&gt;Images&lt;/h3&gt;
+    &lt;img src="assets/window.jpg" style="grid-column: 1 / 4;"&gt;
+    &lt;img src="assets/ironing.jpg"&gt;
+    &lt;img src="assets/vacuum.jpg"&gt;
+    &lt;img src="assets/staff.jpg"&gt;
+    &lt;img src="assets/mirror.jpg" style="grid-column: 1 / 4;"&gt;
+&lt;/div&gt;
+</code></pre>
+<p>CSS</p>
+<pre><code class="language-css">.image-area {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: min-content auto auto auto;
+}
+
+.image-area img {
+    width: 100%;
+    height: auto;
+}
+</code></pre>
+<h2 id="footer"><a class="header" href="#footer">Footer</a></h2>
+<img src="assets/mockup.png" style="width: 100%; aspect-ratio: 9; margin: auto; object-fit: cover; object-position: 0% 100%;">
+<h2 id="layout-result"><a class="header" href="#layout-result">Layout Result</a></h2>
+<p>When combining everything:</p>
+<img src="assets/3-2everything.png">
+<p>HTML</p>
+<pre><code class="language-html">&lt;!DOCTYPE HTML&gt;
+&lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;title&gt;Clean and Gleam&lt;/title&gt;
+        &lt;meta charset="utf-8"&gt;
+        &lt;meta name="keywords" content=""&gt;
+        &lt;meta name="description" content="My description"&gt;
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+        &lt;link rel="stylesheet" href="styles.css"&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;main class="grid-wrapper"&gt;
+            &lt;header class="header"&gt;
+                &lt;img class="logo" src="assets/logo.jpg"&gt;
+                &lt;h1 class="header-title"&gt;&lt;strong&gt;Clean and Gleam&lt;/strong&gt;&lt;/h1&gt;
+            &lt;/header&gt;
+            &lt;section class="content"&gt;
+                &lt;div class="text-area"&gt;
+                    &lt;h3 class="heading" style="grid-row: 1; grid-column: 1 / 3;"&gt;About Us&lt;/h3&gt;
+                    &lt;p  class="justified" style="grid-row: 2; grid-column: 1 / 3;"&gt;
+                        Clean and Gleam is a family run domestic cleaning company with the combined experience within the cleaning industry for over twenty years. We offer professional cleaning services to make your home or apartment look its very best. From cleaning sinks, baths and tiles to polishing windows, our cleaners have the expertise to deal with every cleaning challenge.&lt;br&gt;
+                        Let our staff customise a cleaning service programme to suit your individual needs and your budget. Whether you require a regular service (daily, weekly or monthly) or just a one-off service, you can count on Clean and Gleam for a cleaning service at excellent rates.
+                    &lt;/p&gt;
+                    &lt;h3 class="heading justified" style="grid-row: 3; grid-column: 1;"&gt;Customer Reviews&lt;/h3&gt;
+                    &lt;i  style="grid-row: 4; grid-column: 1;"&gt;
+                        "Fantastic. Used for over 2 years."&lt;br&gt;
+                        "The deep clean is well worth the money. Kitchen gleaming for a long time afterwards."&lt;br&gt;
+                        "Joel is fantastic. He has been doing my weekly clean for five months."&lt;br&gt;
+                        "I have found I only need a deep clean every three or four months as they are so thorough."&lt;br&gt;
+                        "Sofa and chairs cleaned up like new."
+                    &lt;/i&gt;
+                    &lt;h3 class="heading" style="grid-row: 3; grid-column: 2;"&gt;Services&lt;/h3&gt;
+                    &lt;p  style="grid-row: 4; grid-column: 2;"&gt;
+                        Daily clean&lt;br&gt;
+                        Weekly clean&lt;br&gt;
+                        Monthly clean&lt;br&gt;
+                        Deep clean specials&lt;br&gt;
+                        Window cleaning&lt;br&gt;
+                        Carpet and upholstery cleaning&lt;br&gt;
+                        General laundry&lt;br&gt;
+                        Bedding laundry&lt;br&gt;
+                        Ironing&lt;br&gt;
+                        House clearances
+                    &lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div class="image-area"&gt;
+                    &lt;h3 class="heading" style="grid-template-columns: 1 / 4;"&gt;Images&lt;/h3&gt;
+                    &lt;img src="assets/window.jpg" style="grid-column: 1 / 4;"&gt;
+                    &lt;img src="assets/ironing.jpg"&gt;
+                    &lt;img src="assets/vacuum.jpg"&gt;
+                    &lt;img src="assets/staff.jpg"&gt;
+                    &lt;img src="assets/mirror.jpg" style="grid-column: 1 / 4;"&gt;
+                &lt;/div&gt;
+            &lt;/section&gt;
+            &lt;footer class="footer"&gt;
+                &lt;p&gt;Email us&lt;/p&gt;
+            &lt;/footer&gt;
+        &lt;/main&gt;
+
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>CSS</p>
+<pre><code class="language-css">body {
+    margin: 0;
+    height: 100vh;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: min-content auto min-content;
+}
+
+img.logo {
+    width: 100px;
+}
+
+.header * {
+    display: inline;
+    vertical-align: middle;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 380px auto;
+}
+
+.text-area {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: min-content auto min-content auto;
+}
+
+.image-area {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: min-content auto auto auto;
+}
+
+.image-area img {
+    width: 100%;
+    height: auto;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="styling-the-website"><a class="header" href="#styling-the-website">Styling the website</a></h1>
+<p>The fun part. We need to style the website so it looks good, according to the requirements.</p>
+<p>Here’s a run down</p>
+<h2 id="requirements-1"><a class="header" href="#requirements-1">Requirements</a></h2>
+<ul>
+<li>Use Arial font</li>
+<li>Use external stylesheet</li>
+<li>Use suitable padding/margins</li>
+</ul>
+<h3 id="header-1"><a class="header" href="#header-1">Header</a></h3>
+<ul>
+<li>Black background (#000000)</li>
+<li>Set Logo font size to 40px</li>
+<li>Set font colour to white (#FFFFFF)</li>
+<li>Embolden the text</li>
+<li>Insert logo as shown</li>
+<li>Set width of logo to 100px</li>
+</ul>
+<h3 id="content-1"><a class="header" href="#content-1">Content</a></h3>
+<ul>
+<li>Beige background (#F5F5DC)</li>
+<li>Text Area
+<ul>
+<li>Set width to 380px</li>
+<li>Insert the headings as shown</li>
+<li>Set font size of headings to 20px</li>
+<li>Insert text as shown</li>
+<li>Justify <strong>About Us</strong> and <strong>Customer Reviews</strong> texts</li>
+<li>Italicise customer reviews text</li>
+<li>Set services text to a bulleted list</li>
+</ul>
+</li>
+</ul>
+<h2 id="styling"><a class="header" href="#styling">Styling</a></h2>
+<h3 id="colors"><a class="header" href="#colors">Colors</a></h3>
+<p>Colors are cool or smth</p>
+<h3 id="font"><a class="header" href="#font">Font</a></h3>
+<p>Let’s settle the easiest part: font type.</p>
+<p>With the universal css selector (<code>*</code>) we can make sure every font is set to arial. Set a fallback just in case</p>
+<pre><code class="language-css">* {
+    font-family: 'Arial', sans-serif;
+}
+</code></pre>
+<h3 id="marginspadding"><a class="header" href="#marginspadding">Margins/Padding</a></h3>
+<p>Let’s add padding and margins. First, to the whole site, with <code>&lt;body&gt;</code> to <code>&lt;main&gt;</code></p>
+<p>Add whatever looks right to you. Something that gives enough space but not too much empty space.</p>
+<pre><code class="language-css">body {
+    padding: 1.6em;
+}
 </code></pre>
 
                     </main>
